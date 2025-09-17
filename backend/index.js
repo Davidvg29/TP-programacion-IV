@@ -2,6 +2,7 @@ const express = require ("express")
 const mysql = require ("mysql2")
 const {connection} = require('./config/dataBase')
 const inscripciones = require ("./router/inscripciones")
+const cursos = require ("./router/cursos")
 
 
 //instancio express
@@ -11,10 +12,12 @@ const app = express()
 app.use(express.json())
 
 app.use('/inscripciones', inscripciones)
+app.use('/cursos', cursos)
 
-app.use('/', (req, res)=>{
-   return res.status(200).json('Peticion de prueba jaja jeje jiji jojo juju')
-})
+
+// app.use('/', (req, res)=>{
+//    return res.status(200).json('Peticion de prueba jaja jeje jiji jojo juju')
+// })
 
 
 app.listen(8000, () => {
