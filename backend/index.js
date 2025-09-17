@@ -1,7 +1,6 @@
 const express = require ("express")
 const mysql = require ("mysql2")
-const cursos = require ("./router/cursos")
-const estudiantes = require ("./router/estudiantes")
+const {connection} = require('./config/dataBase')
 const inscripciones = require ("./router/inscripciones")
 
 
@@ -11,24 +10,12 @@ const app = express()
 //utilizo libreria
 app.use(express.json())
 
-app.use("/cursos",cursos)
-app.use("/estudiantes", estudiantes)
-app.use("/inscripciones", inscripciones)
+app.use('/inscripciones', inscripciones)
 
-
-
-
-app.get("/cursos", (req,res) => {
-    res.send("API de cursos")
+app.use('/', (req, res)=>{
+   return res.status(200).json('Peticion de prueba jaja jeje jiji jojo juju')
 })
 
-app.get("/estudiantes", (req,res) => {
-    res.send("API de estudiantes")
-})
-
-app.get("/inscripciones", (req,res) => {
-    res.send("API de inscripciones")
-})
 
 app.listen(8000, () => {
     console.log("Servidor corriendo en el puerto 8000")
