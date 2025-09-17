@@ -46,7 +46,7 @@ const actualizarCurso = (req, res) => {
     const { id } = req.params;
     const { nombre, descripcion } = req.body;
     connection.query(
-        'UPDATE cursos SET nombre = ?, descripcion = ? WHERE id = ?',
+        'UPDATE cursos SET nombre = ?, descripcion = ? WHERE id_curso = ?',
         [nombre, descripcion, id],
         (error, result) => {
             if (error) {
